@@ -28,7 +28,6 @@ import { Button } from "@/components/ui/button";
 import { useRouter } from "next/navigation";
 import { UploadButton } from "@/lib/uploadThing";
 import FileUpload from "../file-upload";
-import { useModal } from "@/hooks/use-modal-store";
 
 const formSchema = z.object({
      name: z.string().min(1, {
@@ -39,11 +38,15 @@ const formSchema = z.object({
      })
 });
 
-export default function CreateServerModal() {
-     const { isOpen, onClose, type } = useModal()
+export default function CreateServer() {
+     const [isMounted, setIsMounted] = useState(false);
+
      const router = useRouter();
 
-     const isModalOpen = isOpen && type === 'createServer'
+     useEffect(() => {
+          setIsMounted(true);
+     }, []);
+
      const form = useForm({
           resolver: zodResolver(formSchema),
           defaultValues: {
@@ -60,17 +63,19 @@ export default function CreateServerModal() {
 
                form.reset();
                router.refresh();
-               onClose()
+               window.location.reload();
           } catch (error) {
                console.log(error);
           }
      }
-     const handleClose = () => {
-          form.reset()
-          onClose()
+
+     // For hydration error
+     if (!isMounted) {
+          return null;
      }
+
      return (
-          <Dialog open={isModalOpen} onOpenChange={handleClose}>
+          <Dialog open>
                <DialogContent className="bg-white text-black p-0 overflow-hidden">
                     <DialogHeader className="pt-8 px-6">
                          <DialogTitle className="text-2xl text-center font-bold">

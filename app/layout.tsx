@@ -4,6 +4,7 @@ import "./globals.css";
 import { ClerkProvider } from '@clerk/nextjs'
 import { ThemeProvider } from "@/components/Providers/ThemeProvider";
 import { cn } from "@/lib/utils";
+import ModalProviders from "@/components/Providers/modal-providers";
 
 const openSans = Open_Sans({ subsets: ["latin"] });
 
@@ -28,7 +29,9 @@ export default function RootLayout({
             disableTransitionOnChange
             storageKey="discrod-theme"
           >
+            <ModalProviders />
             {children}
+
           </ThemeProvider>
         </body>
       </html>

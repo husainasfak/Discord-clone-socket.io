@@ -1,4 +1,4 @@
-import CreateServer from "@/components/modals/createServer";
+import CreateServer from "@/components/modals/createServerInitial";
 import { db } from "@/lib/db";
 import { initProfile } from "@/lib/initial-profile"
 import { redirect } from "next/navigation";
