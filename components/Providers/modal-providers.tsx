@@ -3,6 +3,8 @@
 import CreateServerModal from '@/components/modals/createServer'
 import { useEffect, useState } from 'react'
 import InviteUserModal from '../modals/inviteUserModal'
+import EditServerModal from '../modals/edit-server-modal'
+import { MembersModal } from '../modals/members'
 
 
 export default function ModalProviders() {
@@ -17,6 +19,8 @@ export default function ModalProviders() {
           <>
                <CreateServerModal />
                <InviteUserModal />
+               <EditServerModal />
+               <MembersModal />
           </>
      )
 }
