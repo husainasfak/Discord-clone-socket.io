@@ -8,6 +8,7 @@ import { ChatHeader } from "@/components/chat/chat-header";
 // import { ChatMessages } from "@/components/chat/chat-messages";
 // import { MediaRoom } from "@/components/media-room";
 import { db } from "@/lib/db";
+import { ChatInput } from "@/components/chat/chat-input";
 
 interface ChannelIdPageProps {
      params: {
@@ -49,9 +50,9 @@ const ChannelIdPage = async ({
                     serverId={channel.serverId}
                     type="channel"
                />
-               {/* {channel.type === ChannelType.TEXT && (
-        <>
-          <ChatMessages
+               {channel.type === ChannelType.TEXT && (
+                    <>
+                         {/* <ChatMessages
             member={member}
             name={channel.name}
             chatId={channel.id}
@@ -64,26 +65,26 @@ const ChannelIdPage = async ({
             }}
             paramKey="channelId"
             paramValue={channel.id}
-          />
-          <ChatInput
-            name={channel.name}
-            type="channel"
-            apiUrl="/api/socket/messages"
-            query={{
-              channelId: channel.id,
-              serverId: channel.serverId,
-            }}
-          />
-        </>
-      )}
-      {channel.type === ChannelType.AUDIO && (
+          /> */}
+                         <ChatInput
+                              name={channel.name}
+                              type="channel"
+                              apiUrl="/api/socket/messages"
+                              query={{
+                                   channelId: channel.id,
+                                   serverId: channel.serverId,
+                              }}
+                         />
+                    </>
+               )}
+               {/* {channel.type === ChannelType.AUDIO && (
         <MediaRoom
           chatId={channel.id}
           video={false}
           audio={true}
         />
-      )}
-      {channel.type === ChannelType.VIDEO && (
+      )} */}
+               {/* {channel.type === ChannelType.VIDEO && (
         <MediaRoom
           chatId={channel.id}
           video={true}
